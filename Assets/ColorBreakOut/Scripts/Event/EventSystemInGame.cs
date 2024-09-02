@@ -20,8 +20,8 @@ namespace ColorBreakOut
     //     /// <summary>現在のゲームシーン上に何個Ballがあるか</summary>
     //     [SerializeField, HideInInspector] public int m_currentBall = 0;
 
-    //     /// <summary>現在のゲームシーン上に何個Blockがあるか</summary>
-    //     [SerializeField, HideInInspector] public int m_currentBlock = 0;
+    /// <summary>現在のゲームシーン上に何個Blockがあるか</summary>
+    [SerializeField, HideInInspector] public int m_currentBlock = 0;
 
     //     /// <summary>ブロックが壊れた時のイベントを実行</summary>
     //     public void ExecuteBleakBlockEvent(float score)
