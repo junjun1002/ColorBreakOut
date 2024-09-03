@@ -27,8 +27,6 @@ namespace ColorBreakOut
 
         //ボールに補正を書ける変数群
         #region BallCorrection 
-        /// <summary>HitFactor 係数</summary>
-        [SerializeField] float m_hitFactorCoefficient = 2f;
         /// <summary>ボールの最高速度</summary>
         [SerializeField] float m_maxSpeed = 5f;
         /// <summary>ボールの最低速度</summary>
@@ -87,8 +85,8 @@ namespace ColorBreakOut
             if (collision.gameObject.TryGetComponent<BarController>(out var barController))
             {
                 float hitFactor = HitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.x);
-                Vector2 forceDirection = Vector2.right * hitFactor * m_hitFactorCoefficient;
-                m_rb2d.AddForce(forceDirection, ForceMode2D.Impulse);
+                Vector2 direction = new Vector2(hitFactor, 1).normalized;
+                m_rb2d.velocity = direction * m_rb2d.velocity.magnitude;
             }
         }
 
@@ -153,7 +151,7 @@ namespace ColorBreakOut
 
         /// <summary>
         /// バーのどの位置に当たったのかを計算する。
-        /// 右端に当たったら 1、中央に当たったら 0、左端に当たったら 1 を返す
+        /// 右端に当たったら 1、中央に当たったら 0、左端に当たったら -1 を返す
         /// ボールが垂直方向に動いた時の詰み防止とPlayerの技術でブロックを狙えるように
         /// </summary>
         /// <param name="ballPosition"></param>
