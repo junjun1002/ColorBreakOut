@@ -22,8 +22,14 @@ namespace ColorBreakOut
                 m_currentLife--;
                 if (m_currentLife == 0)
                 {
+                    eventSystemInGame.CurrentCombo++;
+                    eventSystemInGame.ExecuteBreakBlockEvent(m_blockData.Score);
                     gameObject.SetActive(false);
                 }
+            }
+            else
+            {
+                eventSystemInGame.CurrentCombo = 0;
             }
         }
 

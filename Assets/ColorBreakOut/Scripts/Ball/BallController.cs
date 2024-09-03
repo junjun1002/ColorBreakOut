@@ -78,7 +78,7 @@ namespace ColorBreakOut
                     }
                 }
                 m_spriteRenderer.color = m_colorList[m_currentColorIndex];
-                m_eventSystemInGame.m_currentBallColor = m_colorList[m_currentColorIndex]; 
+                m_eventSystemInGame.m_currentBallColor = m_colorList[m_currentColorIndex];
             }
 
             // 衝突相手がバーならバーのどの位置に当たったか加える力を変える

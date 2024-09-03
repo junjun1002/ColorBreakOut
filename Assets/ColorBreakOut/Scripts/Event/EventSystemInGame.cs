@@ -10,8 +10,9 @@ namespace ColorBreakOut
     /// </summary>
     public class EventSystemInGame : MonoBehaviour
     {
-        //     /// <summary>ブロックが壊れた時のイベント</summary>
-        //     public event Action<float> BleackBlockEvent;
+        /// <summary>ブロックが壊れた時のイベント</summary>
+        public event Action<int> BreackBlockScoreEvent;
+        public event Action<int> ComboChangedEvent;
         //     /// <summary>ゲームが始まる時のイベント</summary>
         //     public event Action GameStartEvent;
         //     /// <summary>ゲームが終わった時のイベント</summary>
@@ -23,11 +24,26 @@ namespace ColorBreakOut
         /// <summary>現在のゲームシーン上に何個Blockがあるか</summary>
         [SerializeField, HideInInspector] public int m_currentBlock = 0;
 
-        //     /// <summary>ブロックが壊れた時のイベントを実行</summary>
-        //     public void ExecuteBleakBlockEvent(float score)
-        //     {
-        //         BleackBlockEvent?.Invoke(score);
-        //     }
+        /// <summary>現在のゲームシーン上に何個Blockがあるか</summary>
+        private int m_currentCombo = 0;
+        public int CurrentCombo
+        {
+            get => m_currentCombo;
+            set
+            {
+                if (m_currentCombo != value)
+                {
+                    m_currentCombo = value;
+                    ComboChangedEvent?.Invoke(m_currentCombo);
+                }
+            }
+        }
+
+        /// <summary>ブロックが壊れた時のイベントを実行</summary>
+        public void ExecuteBreakBlockEvent(int score)
+        {
+            BreackBlockScoreEvent?.Invoke(score);
+        }
 
         //     /// <summary>ゲームが始まる時のイベントを実行</summary>
         //     public void ExecuteGameStartEvent()
