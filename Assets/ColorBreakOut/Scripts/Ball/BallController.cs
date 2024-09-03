@@ -17,6 +17,8 @@ namespace ColorBreakOut
         [SerializeField] float m_powerScale = 5f;
         /// <summary>ボールの色のリスト</summary>
         [SerializeField] List<Color> m_colorList = new List<Color>();
+        /// <summary>フィーバーモードのボールのエフェクト</summary>
+        [SerializeField] GameObject m_feverEffect;
         #endregion
 
         private Rigidbody2D m_rb2d;
@@ -90,6 +92,16 @@ namespace ColorBreakOut
             }
         }
 
+        private void ActiveFeverEfecftEvent()
+        {
+            m_feverEffect.SetActive(true);
+        }
+
+        private void DeactiveFeverEfecftEvent()
+        {
+            m_feverEffect.SetActive(false);
+        }
+
         /// <summary>
         /// Objectがアクティブになった時の処理
         /// ゲーム開始時とアイテムを取得したら基本的に呼ばれる
@@ -99,6 +111,8 @@ namespace ColorBreakOut
             m_rb2d = GetComponent<Rigidbody2D>();
             m_spriteRenderer = GetComponent<SpriteRenderer>();
             m_spriteRenderer.color = m_colorList[m_currentColorIndex];
+            m_eventSystemInGame.FeverStartEvent += ActiveFeverEfecftEvent;
+            m_eventSystemInGame.FeverEndEvent += DeactiveFeverEfecftEvent;
             Push();
         }
 

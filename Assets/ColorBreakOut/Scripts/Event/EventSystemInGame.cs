@@ -13,7 +13,14 @@ namespace ColorBreakOut
 
         /// <summary>ブロックが壊れた時のイベント</summary>
         public event Action<int> BreackBlockScoreEvent;
+        /// <summary>コンボ数が変わった時のイベント</summary>
         public event Action<int> ComboChangedEvent;
+
+        /// <summary>フィーバーモードが始まった時のイベント</summary>
+        public event Action FeverStartEvent;
+        /// <summary>フィーバーモードが終わった時のイベント</summary;
+        public event Action FeverEndEvent;
+
         //     /// <summary>ゲームが始まる時のイベント</summary>
         //     public event Action GameStartEvent;
         //     /// <summary>ゲームが終わった時のイベント</summary>
@@ -27,7 +34,6 @@ namespace ColorBreakOut
 
         /// <summary>現在コンボ数</summary>
         private int m_currentCombo = 0;
-
         public int CurrentCombo
         {
             get => m_currentCombo;
@@ -58,6 +64,17 @@ namespace ColorBreakOut
         public void ExecuteBreakBlockEvent(int score)
         {
             BreackBlockScoreEvent?.Invoke(score);
+        }
+
+        /// <summary>フィーバーモードが始まった時のイベントを実行</summary>
+        public void ExecuteStartFeverModeEvent()
+        {
+            FeverStartEvent?.Invoke();
+        }
+
+        public void ExecuteEndFeverModeEvent()
+        {
+            FeverEndEvent?.Invoke();
         }
 
         //     /// <summary>ゲームが始まる時のイベントを実行</summary>
