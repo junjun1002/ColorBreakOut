@@ -58,8 +58,16 @@ namespace ColorBreakOut
         {
             //SoundManager.Instance.PlaySE(SoundManager.Instance.m_ballSe);
 
+            // 衝突相手がバーならバーのどの位置に当たったか加える力を変える
+            if (collision.gameObject.TryGetComponent<BarController>(out var barController))
+            {
+                float hitFactor = HitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.x);
+                Vector2 direction = new Vector2(hitFactor, 1).normalized;
+                m_rb2d.velocity = direction * m_rb2d.velocity.magnitude;
+            }
+
             // 衝突相手がIEventCollisionを持っていたらその関数を呼ぶ
-            if (collision.gameObject.TryGetComponent<IEventCollision>(out var eventCollision))
+            if (collision.gameObject.TryGetComponent<IEventCollision>(out var eventCollision)) 
             {
                 eventCollision.CollisionEvent(m_eventSystemInGame);
             }
@@ -83,14 +91,6 @@ namespace ColorBreakOut
                 }
                 m_spriteRenderer.color = m_colorList[m_currentColorIndex];
                 m_eventSystemInGame.m_currentBallColor = m_colorList[m_currentColorIndex];
-            }
-
-            // 衝突相手がバーならバーのどの位置に当たったか加える力を変える
-            if (collision.gameObject.TryGetComponent<BarController>(out var barController))
-            {
-                float hitFactor = HitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.x);
-                Vector2 direction = new Vector2(hitFactor, 1).normalized;
-                m_rb2d.velocity = direction * m_rb2d.velocity.magnitude;
             }
         }
 
