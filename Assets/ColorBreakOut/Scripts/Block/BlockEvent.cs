@@ -14,10 +14,22 @@ namespace ColorBreakOut
         /// <summary>あと何回ぶつかるとこわれるか </summary>
         private int m_currentLife;
 
+        private GameManager m_gameManager;
+        private GameState m_gameState;
+
         public void CollisionEvent(EventSystemInGame eventSystemInGame)
         {
-            // ボールの色と同じだったら自身の色が同じなら壊れる
-            if (m_blockData.Color == eventSystemInGame.m_currentBallColor)
+            // フィーバーモード中は色は関係なく壊れる
+            if (m_gameManager.stateMachine.CurrentState == m_gameState.FeverState)
+            {
+                m_currentLife--;
+                if (m_currentLife == 0)
+                {
+                    eventSystemInGame.ExecuteBreakBlockEvent(m_blockData.Score);
+                    gameObject.SetActive(false);
+                }
+            }
+            else if (m_blockData.Color == eventSystemInGame.m_currentBallColor)  // ボールの色と同じだったら自身の色が同じなら壊れる
             {
                 m_currentLife--;
                 if (m_currentLife == 0)
@@ -36,6 +48,9 @@ namespace ColorBreakOut
         private void OnEnable()
         {
             m_currentLife = m_blockData.Life;
+            m_gameManager = GameManager.Instance;
+            m_gameState = GameState.Instance;   
+
         }
     }
 }

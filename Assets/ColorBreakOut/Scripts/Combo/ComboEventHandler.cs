@@ -16,7 +16,7 @@ namespace ColorBreakOut
         [SerializeField] TextMeshProUGUI m_comboText;
 
         /// <summary>
-        /// Blockが壊れた時に呼ばれるイベント
+        /// コンボ数が変化したときに呼ばれる関数イベント
         /// OnEnableで登録
         /// </summary>
         /// <param name="combo"></param>

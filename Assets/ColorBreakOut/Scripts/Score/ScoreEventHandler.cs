@@ -24,7 +24,10 @@ namespace ColorBreakOut
         /// <param name="score"></param>
         public void BreakBlockEvent(int score)
         {
-            m_currentScore += score * m_eventSystemInGame.CurrentCombo;
+            // フィーバーモード中はスコアを10倍にする
+            if (m_gameManager.stateMachine.CurrentState == m_gameState.FeverState) m_currentScore += score * 10;
+            else m_currentScore += score * m_eventSystemInGame.CurrentCombo;
+
             m_scoreText.text = "Score : " + m_currentScore;
         }
 

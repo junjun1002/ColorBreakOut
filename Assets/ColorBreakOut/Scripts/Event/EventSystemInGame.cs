@@ -10,6 +10,9 @@ namespace ColorBreakOut
     /// </summary>
     public class EventSystemInGame : MonoBehaviour
     {
+        GameManager m_gameManager;
+        GameState m_gameState;
+
         /// <summary>ブロックが壊れた時のイベント</summary>
         public event Action<int> BreackBlockScoreEvent;
         public event Action<int> ComboChangedEvent;
@@ -24,19 +27,39 @@ namespace ColorBreakOut
         /// <summary>現在のゲームシーン上に何個Blockがあるか</summary>
         [SerializeField, HideInInspector] public int m_currentBlock = 0;
 
-        /// <summary>現在のゲームシーン上に何個Blockがあるか</summary>
+        /// <summary>現在コンボ数</summary>
         private int m_currentCombo = 0;
+
         public int CurrentCombo
         {
             get => m_currentCombo;
             set
             {
+                // フィーバーモード中はコンボ数を変更しない
+                if (m_gameManager.stateMachine.CurrentState == m_gameState.FeverState)
+                {
+                    return;
+                }
+
+                // コンボ数が変わったらイベントを実行
                 if (m_currentCombo != value)
                 {
                     m_currentCombo = value;
                     ComboChangedEvent?.Invoke(m_currentCombo);
+
+                    if (m_currentCombo >= 5)
+                    {
+                       m_gameManager.ChangeFeverMode();
+                    }
                 }
             }
+        }
+
+        /// <summary>初期化処理</summary>
+        private void Awake()
+        {
+            m_gameManager = GameManager.Instance;
+            m_gameState = GameState.Instance;
         }
 
         /// <summary>ブロックが壊れた時のイベントを実行</summary>
