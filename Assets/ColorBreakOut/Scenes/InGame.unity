@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d429133c8c1d9d499693ed7b6d063e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_currentBallColor: {r: 1, g: 0, b: 0, a: 1}
   m_currentBlock: 0
 --- !u!1 &126948764
 GameObject:
@@ -247,6 +248,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockGenerater
       objectReference: {fileID: 0}
+    - target: {fileID: 5392712479994633935, guid: a1752e25d9a765d48835efb5238ef765, type: 3}
+      propertyPath: m_blockArr.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392712479994633935, guid: a1752e25d9a765d48835efb5238ef765, type: 3}
+      propertyPath: m_blockArr.Array.data[1]
+      value: 
+      objectReference: {fileID: 8348729662894467665, guid: ad87728492f51114aa486c8ee97104b1, type: 3}
+    - target: {fileID: 5392712479994633935, guid: a1752e25d9a765d48835efb5238ef765, type: 3}
+      propertyPath: m_blockArr.Array.data[2]
+      value: 
+      objectReference: {fileID: 8213976771468124684, guid: 5b22c0668fa304d4980dc9896a80dc90, type: 3}
     - target: {fileID: 5664075502073401865, guid: a1752e25d9a765d48835efb5238ef765, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

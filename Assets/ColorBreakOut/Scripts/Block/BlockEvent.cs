@@ -16,10 +16,16 @@ namespace ColorBreakOut
 
         public void CollisionEvent(EventSystemInGame eventSystemInGame)
         {
-            m_currentLife--;
-            if (m_currentLife == 0)
+            Debug.Log(m_blockData.Color);
+            Debug.Log(eventSystemInGame.m_currentBallColor);
+            // ボールの色と同じだったら自身の色が同じなら壊れる
+            if (m_blockData.Color == eventSystemInGame.m_currentBallColor)
             {
-                gameObject.SetActive(false);
+                m_currentLife--;
+                if (m_currentLife == 0)
+                {
+                    gameObject.SetActive(false);
+                }
             }
         }
 
