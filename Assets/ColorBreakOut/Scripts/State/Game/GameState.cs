@@ -1,9 +1,3 @@
-using ColorBreakOut;
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Linq;
-using UnityEngine;
-
 namespace ColorBreakOut
 {
     /// <summary>
@@ -37,10 +31,5 @@ namespace ColorBreakOut
             DontDestroyOnLoad(this);
             stateMachine = new StateMachine<GameManager>(GameManager.Instance, InGameState);
         }
-
-        //void Update()
-        //{
-        //    Debug.Log(stateMachine.currentState);
-        //}
     }
 }

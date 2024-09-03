@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ColorBreakOut
@@ -8,7 +7,7 @@ namespace ColorBreakOut
     /// Playerが動かすBarの挙動を操作するクラス
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
-    public class BarController : EventReceiver<BarController>
+    public class BarController : MonoBehaviour
     {
         /// <summary>バーが動くスピード</summary>
         [SerializeField] float m_speed;
@@ -22,6 +21,7 @@ namespace ColorBreakOut
         private void Start()
         {
             m_rb2d = GetComponent<Rigidbody2D>();
+            StartCoroutine(BallPush());
         }
 
         private void FixedUpdate()
@@ -40,16 +40,6 @@ namespace ColorBreakOut
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
             m_ball.transform.position = m_muzzle.transform.position;
             m_ball.gameObject.SetActive(true);
-        }
-
-        protected override void OnEnable()
-        {
-            StartCoroutine(BallPush());
-        }
-
-        protected override void OnDisable()
-        {
-            
         }
     }
 }

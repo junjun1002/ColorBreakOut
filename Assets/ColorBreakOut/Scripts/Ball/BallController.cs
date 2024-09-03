@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,13 +15,14 @@ namespace ColorBreakOut
         [SerializeField] Vector2 m_powerDirection = Vector2.up + Vector2.right;
         /// <summary>ボールを最初に動かす力の大きさ</summary>
         [SerializeField] float m_powerScale = 5f;
+        /// <summary>ボールの色のリスト</summary>
         [SerializeField] List<Color> m_colorList = new List<Color>();
         #endregion
 
-        /// <summary>バーのクラス</summary>
-        [SerializeField] BarController m_bar;
         private Rigidbody2D m_rb2d;
         private SpriteRenderer m_spriteRenderer;
+
+        // 現在の色のインデックス
         private int m_currentColorIndex = 0;
 
         //ボールに補正を書ける変数群

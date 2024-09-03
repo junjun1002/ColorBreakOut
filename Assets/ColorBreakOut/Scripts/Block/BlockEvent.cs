@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ColorBreakOut
@@ -17,6 +15,7 @@ namespace ColorBreakOut
         private GameManager m_gameManager;
         private GameState m_gameState;
 
+        /// <summary>Blockにボールが衝突したときのイベント</summary>
         public void CollisionEvent(EventSystemInGame eventSystemInGame)
         {
             // フィーバーモード中は色は関係なく壊れる
@@ -45,12 +44,15 @@ namespace ColorBreakOut
             }
         }
 
+        private void Awake()
+        {
+            m_gameManager = GameManager.Instance;
+            m_gameState = GameState.Instance;
+        }
+
         private void OnEnable()
         {
-            m_currentLife = m_blockData.Life;
-            m_gameManager = GameManager.Instance;
-            m_gameState = GameState.Instance;   
-
+            m_currentLife = m_blockData.Life;  
         }
     }
 }

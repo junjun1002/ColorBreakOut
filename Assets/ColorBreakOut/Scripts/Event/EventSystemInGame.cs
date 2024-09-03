@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ColorBreakOut
@@ -35,12 +33,6 @@ namespace ColorBreakOut
             get => m_currentCombo;
             set
             {
-                // フィーバーモード中はコンボ数を変更しない
-                if (m_gameManager.stateMachine.CurrentState == m_gameState.FeverState)
-                {
-                    return;
-                }
-
                 // コンボ数が変わったらイベントを実行
                 if (m_currentCombo != value)
                 {
