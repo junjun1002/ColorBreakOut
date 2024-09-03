@@ -65,6 +65,8 @@ namespace ColorBreakOut
             }
             else
             {
+                if (m_gameManager.stateMachine.CurrentState == m_gameState.FeverState) return;
+
                 // ボールの色を変える
                 for (int i = 0; i < m_colorList.Count; i++)
                 {
@@ -95,6 +97,11 @@ namespace ColorBreakOut
         private void ActiveFeverEfecftEvent()
         {
             m_feverEffect.SetActive(true);
+            // 現在の色のインデックスを更新
+            m_currentColorIndex = (m_currentColorIndex + 1) % m_colorList.Count;
+
+            // 新しい色を設定
+            m_spriteRenderer.color = m_colorList[m_currentColorIndex];
         }
 
         private void DeactiveFeverEfecftEvent()

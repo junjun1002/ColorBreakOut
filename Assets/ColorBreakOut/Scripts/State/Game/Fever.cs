@@ -28,10 +28,20 @@ namespace ColorBreakOut
         {
             // フィーバーモード開始の処理
             Debug.Log("Fever Mode Start");
-            owner.m_eventSystemInGame.ExecuteStartFeverModeEvent();
+            float elapsedTime = 0f;
+            float duration = 10f;
 
-            // 10秒間待つ
-            yield return new WaitForSeconds(10);
+            while (elapsedTime < duration)
+            {
+                // ここに反復処理を追加
+                Debug.Log("Fever Mode Running");
+                owner.m_eventSystemInGame.ExecuteStartFeverModeEvent();
+
+                // 1フレーム待つ
+                yield return null;
+
+                elapsedTime += Time.deltaTime;
+            }
 
             owner.m_eventSystemInGame.ExecuteEndFeverModeEvent();
 
