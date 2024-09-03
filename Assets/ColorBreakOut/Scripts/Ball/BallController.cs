@@ -16,11 +16,14 @@ namespace ColorBreakOut
         [SerializeField] Vector2 m_powerDirection = Vector2.up + Vector2.right;
         /// <summary>ボールを最初に動かす力の大きさ</summary>
         [SerializeField] float m_powerScale = 5f;
+        [SerializeField] List<Color> m_colorList = new List<Color>();
         #endregion
 
         /// <summary>バーのクラス</summary>
         [SerializeField] BarController m_bar;
-        Rigidbody2D m_rb2d;
+        private Rigidbody2D m_rb2d;
+        private SpriteRenderer m_spriteRenderer;
+        private int m_currentColorIndex = 0;
 
         //ボールに補正を書ける変数群
         #region BallCorrection 
@@ -45,10 +48,10 @@ namespace ColorBreakOut
         }
 
 
-        // イベント関係とボールの再利用
-        #region Event&Reuse
+        // イベント関係
+        #region Event
         /// <summary>
-        /// Blockに当たった時のイベント
+        /// 衝突判定のイベント
         /// </summary>
         /// <param name="collision"></param>
         private void OnCollisionEnter2D(Collision2D collision)
@@ -67,6 +70,26 @@ namespace ColorBreakOut
                 Vector2 forceDirection = Vector2.right * hitFactor * m_hitFactorCoefficient;
                 m_rb2d.AddForce(forceDirection, ForceMode2D.Impulse);
             }
+
+            // 衝突相手がブロック以外だったら
+            if(!collision.gameObject.TryGetComponent<BlockEvent>(out var BlockEvent))
+            {
+                // ボールの色を変える
+                for (int i = 0; i < m_colorList.Count; i++)
+                {
+                    if (m_currentColorIndex == m_colorList.Count - 1)
+                    {
+                        m_currentColorIndex = 0;
+                        break;
+                    }
+                    else if (m_currentColorIndex < i)
+                    {
+                        m_currentColorIndex = i;
+                        break;
+                    }
+                }
+                m_spriteRenderer.color = m_colorList[m_currentColorIndex];
+            }
         }
 
         /// <summary>
@@ -76,6 +99,8 @@ namespace ColorBreakOut
         protected override void OnEnable()
         {
             m_rb2d = GetComponent<Rigidbody2D>();
+            m_spriteRenderer = GetComponent<SpriteRenderer>();
+            m_spriteRenderer.color = m_colorList[m_currentColorIndex];
             Push();
         }
 
