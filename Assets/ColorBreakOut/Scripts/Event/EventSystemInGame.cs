@@ -11,8 +11,8 @@ namespace ColorBreakOut
         InGameManager m_inGameManager;
         InGameState m_inGameState;
 
-        /// <summary>ブロックが壊れた時のイベント</summary>
-        public event Action<int> BreackBlockScoreEvent;
+        /// <summary>スコアが変わった時のイベント</summary>
+        public event Action<int> ScoreChangedEvent;
         /// <summary>コンボ数が変わった時のイベント</summary>
         public event Action<int> ComboChangedEvent;
 
@@ -29,6 +29,21 @@ namespace ColorBreakOut
         /// <summary>現在のボールの色</summary>
         [SerializeField, HideInInspector] public Color m_currentBallColor = Color.red;
 
+        private int m_currentScore = 0;
+        public int CurrentScore
+        {
+            get => m_currentScore;
+            set
+            {
+                // Blockの数が変わったらイベントを実行
+                if (m_currentBlock != value)
+                {
+                    m_currentScore = value;
+                    ScoreChangedEvent?.Invoke(m_currentScore);
+                }
+            }
+        }
+
         /// <summary>現在のゲームシーン上に何個Blockがあるか</summary>
         private int m_currentBlock = 0;
         public int CurrentBlock
@@ -42,6 +57,7 @@ namespace ColorBreakOut
                     m_currentBlock = value;
                     if (m_currentBlock == 0)
                     {
+                        GameManager.Instance.m_resultScore = m_currentScore;
                         ExecuteGameEnd();
                     }
                 }
@@ -74,12 +90,6 @@ namespace ColorBreakOut
         {
             m_inGameManager = InGameManager.Instance;
             m_inGameState = InGameState.Instance;
-        }
-
-        /// <summary>ブロックが壊れた時のイベントを実行</summary>
-        public void ExecuteBreakBlockEvent(int score)
-        {
-            BreackBlockScoreEvent?.Invoke(score);
         }
 
         /// <summary>フィーバーモードが始まった時のイベントを実行</summary>

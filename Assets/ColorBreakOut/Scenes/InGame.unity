@@ -235,11 +235,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5392712479994633935, guid: a1752e25d9a765d48835efb5238ef765, type: 3}
       propertyPath: m_rows
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5392712479994633935, guid: a1752e25d9a765d48835efb5238ef765, type: 3}
       propertyPath: m_columns
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5392712479994633935, guid: a1752e25d9a765d48835efb5238ef765, type: 3}
       propertyPath: m_blockArr.Array.size

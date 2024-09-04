@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace ColorBreakOut
 {
@@ -12,19 +13,21 @@ namespace ColorBreakOut
         /// <summary>あと何回ぶつかるとこわれるか </summary>
         private int m_currentLife;
 
-        private InGameManager m_gameManager;
+        private InGameManager m_inGameManager;
         private InGameState m_inGameState;
 
         /// <summary>Blockにボールが衝突したときのイベント</summary>
         public void CollisionEvent(EventSystemInGame eventSystemInGame)
         {
             // フィーバーモード中は色は関係なく壊れる
-            if (m_gameManager.stateMachine.CurrentState == m_inGameState.FeverState)
+            if (m_inGameManager.stateMachine.CurrentState == m_inGameState.FeverState)
             {
                 m_currentLife--;
                 if (m_currentLife == 0)
                 {
-                    eventSystemInGame.ExecuteBreakBlockEvent(m_blockData.Score);
+                    // フィーバーモード中はスコアを10倍にする
+                    eventSystemInGame.CurrentScore += m_blockData.Score * 10;
+                    eventSystemInGame.CurrentBlock--;
                     gameObject.SetActive(false);
                 }
             }
@@ -34,7 +37,7 @@ namespace ColorBreakOut
                 if (m_currentLife == 0)
                 {
                     eventSystemInGame.CurrentCombo++;
-                    eventSystemInGame.ExecuteBreakBlockEvent(m_blockData.Score);
+                    eventSystemInGame.CurrentScore += m_blockData.Score * eventSystemInGame.CurrentCombo;
                     eventSystemInGame.CurrentBlock--;
                     gameObject.SetActive(false);
                 }
@@ -47,7 +50,7 @@ namespace ColorBreakOut
 
         private void Awake()
         {
-            m_gameManager = InGameManager.Instance;
+            m_inGameManager = InGameManager.Instance;
             m_inGameState = InGameState.Instance;
         }
 

@@ -13,7 +13,16 @@ namespace ColorBreakOut
         /// <param name="owner"></param>
         public void OnExecute(GameManager owner)
         {
-            Debug.Log("Result");
+            /// ランキング最下位よりスコアが低いならランキング外
+            if (owner.m_scoreRankingData.RankingList[4].score >= owner.m_resultScore)
+            {
+                owner.m_isRanking = false;
+                return;
+            }
+            else
+            {
+                owner.m_isRanking = true;
+            }
         }
     }
 }

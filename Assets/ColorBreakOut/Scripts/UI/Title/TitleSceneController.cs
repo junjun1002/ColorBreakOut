@@ -13,6 +13,11 @@ namespace ColorBreakOut
         private TitleSceneView view;
 
         /// <summary>
+        /// ÉâÉìÉLÉìÉO
+        /// </summary>
+        [SerializeField] GameObject m_ranking;
+
+        /// <summary>
         /// èâä˙âªèàóù
         /// </summary>
         private void Awake()
@@ -20,7 +25,7 @@ namespace ColorBreakOut
             model = new TitleSceneModel();
             view = FindObjectOfType<TitleSceneView>();
 
-            view.Initialize(OnStartButtonClicked, OnQuitButtonClicked);
+            view.Initialize(OnStartButtonClicked, OnQuitButtonClicked, OnOpenRankingButtonClicked);
         }
 
         /// <summary>
@@ -29,6 +34,11 @@ namespace ColorBreakOut
         private void OnStartButtonClicked()
         {
             model.ChangeScene(GameState.Instance.InGameState, GameManager.Instance.m_inGame);
+        }
+
+        private void OnOpenRankingButtonClicked()
+        {
+            model.OpenRanking(m_ranking);
         }
 
         private void OnQuitButtonClicked()

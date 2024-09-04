@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,11 @@ namespace ColorBreakOut
         [SerializeField] Button m_startButton;
 
         /// <summary>
+        /// ランキングを開くボタン
+        /// </summary>
+        [SerializeField] Button m_openRankingButton;
+
+        /// <summary>
         /// 終了ボタン
         /// </summary>
         [SerializeField] Button m_quitButton;
@@ -23,10 +29,11 @@ namespace ColorBreakOut
         /// 初期化処理
         /// </summary>
         /// <param name="onStartButtonClicked"></param>
-        public void Initialize(Action onStartButtonClicked, Action onQuitButtonClicked)
+        public void Initialize(Action onStartButtonClicked, Action onQuitButtonClicked, Action onOpenRankingButtonClicked)
         {
             m_startButton.onClick.AddListener(() => onStartButtonClicked?.Invoke());
             m_quitButton.onClick.AddListener(() => onQuitButtonClicked?.Invoke());
+            m_openRankingButton.onClick.AddListener(() => onOpenRankingButtonClicked?.Invoke());
         }
     }
 }

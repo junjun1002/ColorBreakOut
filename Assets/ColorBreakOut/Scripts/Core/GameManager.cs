@@ -16,7 +16,13 @@ namespace ColorBreakOut
         [SerializeField] public string m_result = "Result";
         #endregion
 
-        [SerializeField, HideInInspector]public GameState m_gameState;
+        [SerializeField, HideInInspector] public int m_resultScore = 0;
+        [SerializeField, HideInInspector] public bool m_isRanking = false;
+        [SerializeField, HideInInspector] public string m_userName = "TestPlayer";
+
+
+        [SerializeField] public ScoreRankingData m_scoreRankingData;
+        [SerializeField, HideInInspector] public GameState m_gameState;
         public StateMachine<GameManager> stateMachine;
 
         private SceneLoader m_sceneLoader;

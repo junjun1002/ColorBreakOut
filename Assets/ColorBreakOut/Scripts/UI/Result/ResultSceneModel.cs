@@ -16,5 +16,10 @@ namespace ColorBreakOut
         {
             GameManager.Instance.ChangeScene(state, sceneName);
         }
+
+        public void SetUserName(string userName)
+        {
+            GameManager.Instance.m_userName = userName;
+        }
     }
 }
