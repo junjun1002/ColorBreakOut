@@ -18,8 +18,6 @@ namespace ColorBreakOut
 
         [SerializeField, HideInInspector] public int m_resultScore = 0;
         [SerializeField, HideInInspector] public bool m_isRanking = false;
-        [SerializeField, HideInInspector] public string m_userName = "TestPlayer";
-
 
         [SerializeField] public ScoreRankingData m_scoreRankingData;
         [SerializeField, HideInInspector] public GameState m_gameState;
@@ -49,6 +47,16 @@ namespace ColorBreakOut
         {
             stateMachine.ChageMachine(state);
             m_sceneLoader.Load(sceneName);
+        }
+
+        public void RankingUpdate(string userName)
+        {
+            m_scoreRankingData.RankingList[4].userName = userName;
+            m_scoreRankingData.RankingList[4].score = m_resultScore;
+        }
+        private void OnApplicationQuit()
+        {
+            SaveManager.Instance.SaveScriptableObject(m_scoreRankingData);
         }
     }
 }

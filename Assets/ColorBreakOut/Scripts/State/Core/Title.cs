@@ -14,6 +14,7 @@ namespace ColorBreakOut
         public void OnExecute(GameManager owner)
         {
             Debug.Log("Title");
+            SaveManager.Instance.LoadScriptableObject(owner.m_scoreRankingData);
         }
     }
 }

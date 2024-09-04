@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace ColorBreakOut
 {
@@ -19,7 +20,7 @@ namespace ColorBreakOut
         /// </summary>
         [SerializeField] Button m_returnInGameButton;
 
-        [SerializeField] public InputField m_userNameInput;
+        [SerializeField] public TMP_InputField m_userNameInput;
 
         /// <summary>
         /// ‰Šú‰»ˆ—
@@ -40,7 +41,7 @@ namespace ColorBreakOut
                 m_userNameInput.gameObject.SetActive(false);
             }
 
-            m_userNameInput.onValueChanged.AddListener((value) => onUserNameInputed?.Invoke());
+            m_userNameInput.onEndEdit.AddListener((value) => onUserNameInputed?.Invoke());
         }
     }
 }

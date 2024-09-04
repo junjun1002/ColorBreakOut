@@ -698,7 +698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_returnTitleButton: {fileID: 1231771096}
   m_returnInGameButton: {fileID: 166943114}
-  m_userNameInput: {fileID: 0}
+  m_userNameInput: {fileID: 490849457}
 --- !u!1 &764453636
 GameObject:
   m_ObjectHideFlags: 0

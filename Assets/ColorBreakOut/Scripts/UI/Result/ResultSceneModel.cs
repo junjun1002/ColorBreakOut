@@ -19,7 +19,8 @@ namespace ColorBreakOut
 
         public void SetUserName(string userName)
         {
-            GameManager.Instance.m_userName = userName;
+            GameManager.Instance.RankingUpdate(userName);
+            SaveManager.Instance.SaveScriptableObject(GameManager.Instance.m_scoreRankingData);
         }
     }
 }
