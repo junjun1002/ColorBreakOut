@@ -15,12 +15,18 @@ namespace ColorBreakOut
         [SerializeField] Button m_startButton;
 
         /// <summary>
+        /// I—¹ƒ{ƒ^ƒ“
+        /// </summary>
+        [SerializeField] Button m_quitButton;
+
+        /// <summary>
         /// ‰Šú‰»ˆ—
         /// </summary>
         /// <param name="onStartButtonClicked"></param>
-        public void Initialize(Action onStartButtonClicked)
+        public void Initialize(Action onStartButtonClicked, Action onQuitButtonClicked)
         {
             m_startButton.onClick.AddListener(() => onStartButtonClicked?.Invoke());
+            m_quitButton.onClick.AddListener(() => onQuitButtonClicked?.Invoke());
         }
     }
 }

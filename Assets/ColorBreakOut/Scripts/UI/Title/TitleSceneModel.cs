@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ColorBreakOut
@@ -16,6 +14,11 @@ namespace ColorBreakOut
         public void ChangeScene(IState<GameManager> state, string sceneName)
         {
             GameManager.Instance.ChangeScene(state, sceneName);
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
         }
     }
 }

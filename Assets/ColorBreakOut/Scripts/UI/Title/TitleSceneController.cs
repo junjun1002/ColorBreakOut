@@ -20,7 +20,7 @@ namespace ColorBreakOut
             model = new TitleSceneModel();
             view = FindObjectOfType<TitleSceneView>();
 
-            view.Initialize(OnStartButtonClicked);
+            view.Initialize(OnStartButtonClicked, OnQuitButtonClicked);
         }
 
         /// <summary>
@@ -29,6 +29,11 @@ namespace ColorBreakOut
         private void OnStartButtonClicked()
         {
             model.ChangeScene(GameState.Instance.InGameState, GameManager.Instance.m_inGame);
+        }
+
+        private void OnQuitButtonClicked()
+        {
+            model.QuitGame();
         }
     }
 }
