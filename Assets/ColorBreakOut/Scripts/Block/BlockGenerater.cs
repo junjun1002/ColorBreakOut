@@ -21,11 +21,13 @@ namespace ColorBreakOut
         [SerializeField, HideInInspector] List<GameObject> m_blockList;
         #endregion
 
-        EventSystemInGame m_eventSystemInGame;
+        private EventSystemInGame m_eventSystemInGame;
+        private InGameManager m_inGameManager;
 
         private void Awake()
         {
             m_eventSystemInGame = GameObject.FindGameObjectWithTag("EventSystem").GetComponent<EventSystemInGame>();
+            m_inGameManager = InGameManager.Instance;
         }
 
         /// <summary>
@@ -38,7 +40,7 @@ namespace ColorBreakOut
                 for (int i = 0; i < m_blockList.Count; i++)
                 {
                     m_blockList[i].gameObject.SetActive(true);
-                    m_eventSystemInGame.m_currentBlock++;
+                    m_eventSystemInGame.CurrentBlock++;
                 }
                 return;
             }
@@ -60,7 +62,7 @@ namespace ColorBreakOut
                     int a = (i % 2 == 0) ? 1 : -1;
                     pos = pos + Vector2.right * (i + 1) * a * blockWidth; // 列を左右にずらす
                     m_blockList.Add(block);
-                    m_eventSystemInGame.m_currentBlock++;
+                    m_eventSystemInGame.CurrentBlock++;
                 }
                 // 行を下にずらす
                 pos = new Vector2(transform.position.x, pos.y - blockHeight);

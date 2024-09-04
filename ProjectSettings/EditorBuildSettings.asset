@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/ColorBreakOut/Scenes/Title.unity
+    guid: d36519c65ca9d3f4b8634f249b5ca582
   - enabled: 1
     path: Assets/ColorBreakOut/Scenes/InGame.unity
     guid: a010100af396bd2459d301da5add870c
+  - enabled: 1
+    path: Assets/ColorBreakOut/Scenes/Result.unity
+    guid: 17fd943fd969e0444ab5031f4095f942
   m_configObjects: {}

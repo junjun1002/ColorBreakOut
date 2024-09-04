@@ -234,6 +234,14 @@ PrefabInstance:
       value: BlockGenerater
       objectReference: {fileID: 0}
     - target: {fileID: 5392712479994633935, guid: a1752e25d9a765d48835efb5238ef765, type: 3}
+      propertyPath: m_rows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392712479994633935, guid: a1752e25d9a765d48835efb5238ef765, type: 3}
+      propertyPath: m_columns
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392712479994633935, guid: a1752e25d9a765d48835efb5238ef765, type: 3}
       propertyPath: m_blockArr.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -439,7 +447,7 @@ GameObject:
   - component: {fileID: 431614403}
   - component: {fileID: 431614402}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: InGameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -458,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_eventSystemInGame: {fileID: 0}
-  gameState: {fileID: 0}
+  m_inGameState: {fileID: 0}
 --- !u!4 &431614403
 Transform:
   m_ObjectHideFlags: 0
@@ -726,7 +734,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_currentBallColor: {r: 1, g: 0, b: 0, a: 1}
-  m_currentBlock: 0
 --- !u!4 &686133101
 Transform:
   m_ObjectHideFlags: 0
@@ -1105,7 +1112,7 @@ GameObject:
   - component: {fileID: 1054745760}
   - component: {fileID: 1054745759}
   m_Layer: 0
-  m_Name: GameState
+  m_Name: InGameState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

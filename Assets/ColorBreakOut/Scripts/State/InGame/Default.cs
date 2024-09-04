@@ -5,15 +5,15 @@ namespace ColorBreakOut
     /// <summary>
     /// インゲームのステート
     /// </summary>
-    public class InGame : IState<GameManager>
+    public class Default : IState<InGameManager>
     {
         /// <summary>
         /// インゲームの処理
         /// </summary>
         /// <param name="owner"></param>
-        public void OnExecute(GameManager owner)
+        public void OnExecute(InGameManager owner)
         {
-            Debug.Log("InGame");
+            Debug.Log("Default");
             if (owner.m_eventSystemInGame == null) return;
             owner.m_eventSystemInGame.CurrentCombo = 0;
         }

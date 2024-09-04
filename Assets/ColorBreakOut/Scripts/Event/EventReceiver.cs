@@ -9,14 +9,14 @@ namespace ColorBreakOut
     public abstract class EventReceiver<T> : MonoBehaviour where T : MonoBehaviour
     {
         protected EventSystemInGame m_eventSystemInGame;
-        protected GameManager m_gameManager;
-        protected GameState m_gameState;
+        protected InGameManager m_inGameManager;
+        protected InGameState m_inGameState;
 
         private void Awake()
         {
             m_eventSystemInGame = GameObject.FindGameObjectWithTag("EventSystem").GetComponent<EventSystemInGame>();
-            m_gameManager = GameManager.Instance;
-            m_gameState = GameState.Instance;
+            m_inGameManager = InGameManager.Instance;
+            m_inGameState = InGameState.Instance;
         }
 
         /// <summary>

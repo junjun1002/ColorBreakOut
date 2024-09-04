@@ -7,64 +7,42 @@ namespace ColorBreakOut
     /// </summary>
     public class GameManager : SingletonMonoBehavior<GameManager>
     {
-        /// <summary> InGame中のイベント </summary>
-        [SerializeField] public EventSystemInGame m_eventSystemInGame;
+        #region Scene Name
+        /// <summary>タイトルシーンの名前</summary>
+        [SerializeField] public string m_title = "Title";
+        /// <summary>バトルシーン名前</summary>
+        [SerializeField] public string m_inGame = "InGame";
+        /// <summary>リザルトシーンの名前</summary>
+        [SerializeField] public string m_result = "Result";
+        #endregion
 
-        public GameState gameState;
+        [SerializeField, HideInInspector]public GameState m_gameState;
         public StateMachine<GameManager> stateMachine;
+
+        private SceneLoader m_sceneLoader;
 
         protected override void Awake()
         {
             base.Awake();
-            m_eventSystemInGame = GameObject.FindGameObjectWithTag("EventSystem").GetComponent<EventSystemInGame>();
-            gameState = GameState.Instance;
+            DontDestroyOnLoad(this);
+            m_sceneLoader = new SceneLoader();
+            m_gameState = GameState.Instance;
         }
 
         private void Start()
         {
-            stateMachine = gameState.stateMachine;
+            stateMachine = m_gameState.stateMachine;
         }
 
         /// <summary>
-        /// フィーバータイムに移行
+        /// シーンの切り替え
         /// </summary>
-        public void ChangeFeverMode()
+        /// <param name="state"></param>
+        /// <param name="sceneName"></param>
+        public void ChangeScene(IState<GameManager> state, string sceneName)
         {
-            stateMachine.ChageMachine(gameState.FeverState);
+            stateMachine.ChageMachine(state);
+            m_sceneLoader.Load(sceneName);
         }
-
-        ///// <summary>
-        ///// タイトルシーンに遷移
-        ///// </summary>
-        //public void ChangeTitleScene()
-        //{
-        //    stateMachine.ChageMachine(gameState.TitleState);
-        //    SceneLoader.Instance.Load(m_title);
-        //}
-
-        ///// <summary>
-        ///// ゲームシーンに遷移
-        ///// </summary>
-        //public void ChangeGameScene()
-        //{
-        //    stateMachine.ChageMachine(gameState.InGameState);
-        //    SceneLoader.Instance.Load(m_battle);
-        //}
-
-        ///// <summary>
-        ///// ゲームクリア
-        ///// </summary>
-        //public void GameClear()
-        //{
-        //    stateMachine.ChageMachine(gameState.GameClearState);
-        //    SaveAndLoad.Instance.SaveTimeData(m_minute, m_seconds);
-        //    SceneLoader.Instance.Load(m_gameClear);
-        //}
-
-        //public void GameOver()
-        //{
-        //    stateMachine.ChageMachine(gameState.GameOverState);
-        //    SceneLoader.Instance.Load(m_gameOver);
-        //}
     }
 }
