@@ -62,7 +62,20 @@ namespace ColorBreakOut
             if (collision.gameObject.TryGetComponent<BarController>(out var barController))
             {
                 float hitFactor = HitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.x);
-                Vector2 direction = new Vector2(hitFactor, 1).normalized;
+                Vector2 direction;
+
+                // ボールがバーの上側に衝突したか下側に衝突したかを判定
+                if (transform.position.y > collision.transform.position.y)
+                {
+                    // 上側に衝突した場合
+                    direction = new Vector2(hitFactor, 1).normalized;
+                }
+                else
+                {
+                    // 下側に衝突した場合
+                    direction = new Vector2(hitFactor, -1).normalized;
+                }
+
                 m_rb2d.velocity = direction * m_rb2d.velocity.magnitude;
             }
 
