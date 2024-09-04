@@ -43,11 +43,10 @@ namespace ColorBreakOut
                 elapsedTime += Time.deltaTime;
             }
 
-            owner.m_eventSystemInGame.ExecuteEndFeverModeEvent();
-
-            // Ÿ‚Ìó‘Ô‚É‘JˆÚ‚·‚éê‡‚Í‚±‚±‚Ås‚¤
+            // Ÿ‚Ìó‘Ô‚É‘JˆÚ‚·‚é
             Debug.Log("Fever Mode End");
             owner.stateMachine.ChageMachine(owner.gameState.InGameState);
+            owner.m_eventSystemInGame.ExecuteEndFeverModeEvent();
             owner.StopCoroutine(m_feverCoroutine);
         }
 

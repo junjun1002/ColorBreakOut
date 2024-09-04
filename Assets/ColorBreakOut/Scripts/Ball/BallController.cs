@@ -107,6 +107,7 @@ namespace ColorBreakOut
         private void DeactiveFeverEfecftEvent()
         {
             m_feverEffect.SetActive(false);
+            m_eventSystemInGame.m_currentBallColor = m_colorList[m_currentColorIndex];
         }
 
         /// <summary>
