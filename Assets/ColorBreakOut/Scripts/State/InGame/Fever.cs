@@ -17,6 +17,7 @@ namespace ColorBreakOut
         public void OnExecute(InGameManager owner)
         {
             SoundManager.Instance.PlayBGM("Fever");
+            RenderSettings.skybox = owner.m_feverSkybox;
             m_feverCoroutine = owner.StartCoroutine(FeverCoroutine(owner));
         }
 

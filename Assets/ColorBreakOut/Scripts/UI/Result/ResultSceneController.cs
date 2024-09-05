@@ -20,6 +20,7 @@ namespace ColorBreakOut
             model = new ResultSceneModel();
             view = FindObjectOfType<ResultSceneView>();
 
+            view.SetScoreText(model.GetScore());
             view.OnReturnTitleButtonClicked += OnReturnTitleButtonClicked;
             view.OnReturnInGameButtonClicked += OnReturnInGameButtonClicked;
             view.OnUserNameInputed += OnUserNameInputed;

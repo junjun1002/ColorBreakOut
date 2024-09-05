@@ -676,6 +676,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e4aafe40e972b46a6589264ab260a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_feverSkybox: {fileID: 2100000, guid: 3f1e52dec055a3a4f850420ef19cb2b2, type: 2}
+  m_defaultSkybox: {fileID: 2100000, guid: d48a7646f5d0547e889733d84b50cb9f, type: 2}
   m_eventSystemInGame: {fileID: 0}
   m_inGameState: {fileID: 0}
 --- !u!4 &431614403
@@ -1289,7 +1291,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &989361300
 SpriteRenderer:
   m_ObjectHideFlags: 0

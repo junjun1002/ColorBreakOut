@@ -7,6 +7,15 @@ namespace ColorBreakOut
     /// </summary>
     public class InGameManager : SingletonMonoBehavior<InGameManager>
     {
+        /// <summary>
+        /// フィーバータイムのスカイボックス
+        /// </summary>
+        [SerializeField] public Material m_feverSkybox;
+        /// <summary>
+        /// デフォルトのスカイボックス
+        /// </summary>
+        [SerializeField] public Material m_defaultSkybox;
+
         /// <summary> InGame中のイベント </summary>
         [SerializeField, HideInInspector] public EventSystemInGame m_eventSystemInGame;
         [SerializeField, HideInInspector] public InGameState m_inGameState;

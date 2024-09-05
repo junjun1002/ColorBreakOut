@@ -33,7 +33,18 @@ namespace ColorBreakOut
         /// </summary>
         [SerializeField] Button m_returnInGameButton;
 
+        /// <summary>
+        /// スコア表示テキスト
+        /// </summary>
+        [SerializeField] TextMeshProUGUI m_scoreText;
+
+        /// <summary>
+        /// ユーザー名の入力欄
+        /// </summary>
         [SerializeField] TMP_InputField m_userNameInput;
+        /// <summary>
+        /// ランキング更新テキスト
+        /// </summary>
         [SerializeField] TextMeshProUGUI m_rankingUpdateText;
 
         /// <summary>
@@ -65,6 +76,7 @@ namespace ColorBreakOut
             m_rankingUpdateText.gameObject.SetActive(true); 
             m_returnTitleButton.gameObject.SetActive(false);
             m_returnInGameButton.gameObject.SetActive(false);
+            m_scoreText.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -76,6 +88,7 @@ namespace ColorBreakOut
             m_rankingUpdateText.gameObject.SetActive(false);
             m_returnTitleButton.gameObject.SetActive(true);
             m_returnInGameButton.gameObject.SetActive(true);
+            m_scoreText.gameObject.SetActive(true);
         }
 
         /// <summary>
@@ -85,6 +98,11 @@ namespace ColorBreakOut
         public string GetUserName()
         {
             return m_userNameInput.text;
+        }
+
+        public void SetScoreText(int score)
+        {
+            m_scoreText.text = "Score : " + score.ToString();
         }
     }
 }

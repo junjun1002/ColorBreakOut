@@ -113,11 +113,8 @@ namespace ColorBreakOut
         private void ActiveFeverEfecftEvent()
         {
             m_feverEffect.SetActive(true);
-            // 現在の色のインデックスを更新
-            m_currentColorIndex = (m_currentColorIndex + 1) % m_colorList.Count;
-
             // 新しい色を設定
-            m_spriteRenderer.color = m_colorList[m_currentColorIndex];
+            m_spriteRenderer.color = Color.black;
         }
 
         /// <summary>
@@ -127,6 +124,8 @@ namespace ColorBreakOut
         {
             m_feverEffect.SetActive(false);
             m_eventSystemInGame.m_currentBallColor = m_colorList[m_currentColorIndex];
+            // 新しい色を設定
+            m_spriteRenderer.color = m_colorList[m_currentColorIndex];
         }
 
         /// <summary>

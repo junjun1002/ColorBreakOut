@@ -14,13 +14,21 @@ namespace ColorBreakOut
         /// </summary>
         [SerializeField] Button m_closeButton;
 
+        public Action OnCloseButtonClicked { get; set; }
+
+        public Action OnOpenRankingList { get; set; }
+
         /// <summary>
         /// ‰Šú‰»ˆ—
         /// </summary>
-        /// <param name="onCloseButtonClicked"></param>
-        public void Initialize(Action onCloseButtonClicked)
+        public void Initialize()
         {
-            m_closeButton.onClick.AddListener(() => onCloseButtonClicked?.Invoke());
+            m_closeButton.onClick.AddListener(() => OnCloseButtonClicked?.Invoke());
+        }
+
+        private void OnEnable()
+        {
+            OnOpenRankingList?.Invoke();
         }
     }
 }

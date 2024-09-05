@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 
 namespace ColorBreakOut
 {
@@ -71,6 +72,16 @@ namespace ColorBreakOut
         {
             m_scoreRankingData.RankingList[4].userName = userName;
             m_scoreRankingData.RankingList[4].score = m_resultScore;
+
+            // ƒXƒRƒA‚Ì~‡‚É•À‚Ñ‘Ö‚¦
+            var record = m_scoreRankingData.RankingList.OrderByDescending((x) => x.score);
+            int index = 0;
+            foreach (var item in record)
+            {
+                m_scoreRankingData.RankingList[index] = item;
+                index++;
+            }
+
         }
 
         /// <summary>

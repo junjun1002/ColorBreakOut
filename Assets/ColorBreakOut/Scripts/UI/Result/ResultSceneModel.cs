@@ -22,5 +22,13 @@ namespace ColorBreakOut
             GameManager.Instance.RankingUpdate(userName);
             SaveManager.Instance.SaveScriptableObject(GameManager.Instance.m_scoreRankingData);
         }
+
+        /// <summary>
+        /// ƒXƒRƒA‚ğæ“¾‚·‚é
+        /// </summary>
+        public int GetScore()
+        {
+            return GameManager.Instance.m_resultScore;
+        }
     }
 }

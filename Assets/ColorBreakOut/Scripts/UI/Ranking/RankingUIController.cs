@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace ColorBreakOut
@@ -17,6 +19,11 @@ namespace ColorBreakOut
         /// </summary>
         [SerializeField] GameObject m_ranking;
 
+        /// <summary>ランキング入りしたスコアデータ</summary>
+        [SerializeField] ScoreRankingData m_scoreRanking;
+        /// <summary>ランキングを表示させるリスト</summary>
+        [SerializeField] List<TextMeshProUGUI> m_rankingTextList;
+
         /// <summary>
         /// 初期化処理
         /// </summary>
@@ -30,8 +37,12 @@ namespace ColorBreakOut
                 Debug.LogError("RankingUIViewが見つかりませんでした");
                 return;
             }
+
             m_ranking.SetActive(false);
-            view.Initialize(OnCloseButtonClicked);
+
+            view.OnCloseButtonClicked += OnCloseButtonClicked;
+            view.OnOpenRankingList += OnOpenRankingList;
+            view.Initialize();
         }
 
         /// <summary>
@@ -41,6 +52,14 @@ namespace ColorBreakOut
         {
             model.CloseRankiing(m_ranking);
             SoundManager.Instance.PlaySE("Close");
+        }
+
+        /// <summary>
+        /// ランキングを開く
+        /// </summary>
+        private void OnOpenRankingList()
+        {
+            model.OnOpenRankingList(m_scoreRanking, m_rankingTextList);
         }
     }
 }

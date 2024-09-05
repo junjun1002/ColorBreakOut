@@ -13,6 +13,7 @@ namespace ColorBreakOut
         /// <param name="owner"></param>
         public void OnExecute(InGameManager owner)
         {
+            RenderSettings.skybox = owner.m_defaultSkybox;
             Debug.Log("Default");
             SoundManager.Instance.PlayBGM("InGame");
 

@@ -18,17 +18,8 @@ namespace ColorBreakOut
         /// <summary>
         /// ランキングを更新する関数
         /// </summary>
-        public void RankingUpdate()
+        public void OnOpenRankingList()
         {
-            // スコアの降順に並び替え
-            var record = m_scoreRanking.RankingList.OrderByDescending((x) => x.score);
-            int index = 0;
-            foreach (var item in record)
-            {
-                m_scoreRanking.RankingList[index] = item;
-                index++;
-            }
-
             // ランキングを表示
             for (int i = 0; i < m_scoreRanking.RankingList.Count; i++)
             {
@@ -42,7 +33,7 @@ namespace ColorBreakOut
         /// </summary>
         private void OnEnable()
         {
-            RankingUpdate();
+            OnOpenRankingList();
         }
     }
 }
