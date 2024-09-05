@@ -25,7 +25,7 @@ namespace ColorBreakOut
         public event Action GameEndEvent;
 
         /// <summary>現在のボールの色</summary>
-        [SerializeField, HideInInspector] public Color m_currentBallColor = Color.red;
+        [SerializeField, HideInInspector] public Color m_currentBallColor;
 
         /// <summary>
         /// 現在のスコア

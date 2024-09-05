@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e53b785bd99aacb45902d083352acd81, type: 3}
   m_Name: RedBlockData
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 0, b: 0, a: 1}
+  color: {r: 0.9490197, g: 0.21568629, b: 0.21568629, a: 1}
   score: 200
   life: 1

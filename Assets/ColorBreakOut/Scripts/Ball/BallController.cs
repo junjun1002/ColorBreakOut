@@ -107,6 +107,9 @@ namespace ColorBreakOut
             }
         }
 
+        /// <summary>
+        /// フィーバーエフェクトをアクティブにするイベント
+        /// </summary>
         private void ActiveFeverEfecftEvent()
         {
             m_feverEffect.SetActive(true);
@@ -117,6 +120,9 @@ namespace ColorBreakOut
             m_spriteRenderer.color = m_colorList[m_currentColorIndex];
         }
 
+        /// <summary>
+        /// フィーバーエフェクトを非アクティブにするイベント
+        /// </summary>
         private void DeactiveFeverEfecftEvent()
         {
             m_feverEffect.SetActive(false);
@@ -132,6 +138,7 @@ namespace ColorBreakOut
             m_rb2d = GetComponent<Rigidbody2D>();
             m_spriteRenderer = GetComponent<SpriteRenderer>();
             m_spriteRenderer.color = m_colorList[m_currentColorIndex];
+            m_eventSystemInGame.m_currentBallColor = m_colorList[m_currentColorIndex];
             m_eventSystemInGame.FeverStartEvent += ActiveFeverEfecftEvent;
             m_eventSystemInGame.FeverEndEvent += DeactiveFeverEfecftEvent;
             Push();
