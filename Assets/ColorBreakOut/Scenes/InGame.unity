@@ -235,7 +235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5392712479994633935, guid: a1752e25d9a765d48835efb5238ef765, type: 3}
       propertyPath: m_rows
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5392712479994633935, guid: a1752e25d9a765d48835efb5238ef765, type: 3}
       propertyPath: m_columns

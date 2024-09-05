@@ -10,6 +10,10 @@ namespace ColorBreakOut
     /// </summary>
     public class ResultSceneView : MonoBehaviour
     {
+        public Action OnReturnTitleButtonClicked { get; set; }
+        public Action OnReturnInGameButtonClicked { get; set; }
+        public Action OnUserNameInputed { get; set; }
+
         /// <summary>
         /// タイトルに戻るボタン
         /// </summary>
@@ -20,28 +24,54 @@ namespace ColorBreakOut
         /// </summary>
         [SerializeField] Button m_returnInGameButton;
 
-        [SerializeField] public TMP_InputField m_userNameInput;
+        [SerializeField] TMP_InputField m_userNameInput;
+        [SerializeField] TextMeshProUGUI m_rankingUpdateText;
 
         /// <summary>
         /// 初期化処理
         /// </summary>
-        /// <param name="onReturnTitleButtonClicked"></param>
-        /// <param name="onReturnInGameButtonClicked"></param>
-        public void Initialize(Action onReturnTitleButtonClicked, Action onReturnInGameButtonClicked, Action onUserNameInputed)
+        public void Initialize()
         {
-            m_returnTitleButton.onClick.AddListener(() => onReturnTitleButtonClicked?.Invoke());
-            m_returnInGameButton.onClick.AddListener(() => onReturnInGameButtonClicked?.Invoke());
+            m_returnTitleButton.onClick.AddListener(() => OnReturnTitleButtonClicked?.Invoke());
+            m_returnInGameButton.onClick.AddListener(() => OnReturnInGameButtonClicked?.Invoke());
 
             if (GameManager.Instance.m_isRanking)
             {
-                m_userNameInput.gameObject.SetActive(true);
+                ActiveUserNameInput();  
             }
             else
             {
-                m_userNameInput.gameObject.SetActive(false);
+                DeactiveUserNameInput();  
             }
 
-            m_userNameInput.onEndEdit.AddListener((value) => onUserNameInputed?.Invoke());
+            m_userNameInput.onEndEdit.AddListener((value) => OnUserNameInputed?.Invoke());
+        }
+
+        /// <summary>
+        /// ユーザー名の入力を有効にする
+        /// </summary>
+        public void ActiveUserNameInput()
+        {
+            m_userNameInput.gameObject.SetActive(true);
+            m_rankingUpdateText.gameObject.SetActive(true); 
+            m_returnTitleButton.gameObject.SetActive(false);
+            m_returnInGameButton.gameObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// ユーザー名の入力を無効にする
+        /// </summary>
+        public void DeactiveUserNameInput()
+        {
+            m_userNameInput.gameObject.SetActive(false);
+            m_rankingUpdateText.gameObject.SetActive(false);
+            m_returnTitleButton.gameObject.SetActive(true);
+            m_returnInGameButton.gameObject.SetActive(true);
+        }
+
+        public string GetUserName()
+        {
+            return m_userNameInput.text;
         }
     }
 }

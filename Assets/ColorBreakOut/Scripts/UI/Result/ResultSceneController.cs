@@ -20,7 +20,11 @@ namespace ColorBreakOut
             model = new ResultSceneModel();
             view = FindObjectOfType<ResultSceneView>();
 
-            view.Initialize(OnReturnTitleButtonClicked, OnReturnInGameButtonClicked, OnUserNameInputed);
+            view.OnReturnTitleButtonClicked += OnReturnTitleButtonClicked;
+            view.OnReturnInGameButtonClicked += OnReturnInGameButtonClicked;
+            view.OnUserNameInputed += OnUserNameInputed;
+
+            view.Initialize();
         }
 
         /// <summary>
@@ -41,7 +45,8 @@ namespace ColorBreakOut
 
         private void OnUserNameInputed()
         {
-            model.SetUserName(view.m_userNameInput.text);
+            model.SetUserName(view.GetUserName());
+            view.DeactiveUserNameInput();
         }
     }
 }
