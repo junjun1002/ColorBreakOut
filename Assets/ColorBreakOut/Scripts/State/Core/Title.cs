@@ -15,6 +15,7 @@ namespace ColorBreakOut
         {
             Debug.Log("Title");
             SaveManager.Instance.LoadScriptableObject(owner.m_scoreRankingData);
+            SoundManager.Instance.PlayBGM("Title");
         }
     }
 }

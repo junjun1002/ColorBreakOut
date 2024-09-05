@@ -33,6 +33,7 @@ namespace ColorBreakOut
         private void OnReturnTitleButtonClicked()
         {
             model.ChangeScene(GameState.Instance.TitleState, GameManager.Instance.m_title);
+            SoundManager.Instance.PlaySE("Decision");
         }
 
         /// <summary>
@@ -41,12 +42,14 @@ namespace ColorBreakOut
         private void OnReturnInGameButtonClicked()
         {
             model.ChangeScene(GameState.Instance.InGameState, GameManager.Instance.m_inGame);
+            SoundManager.Instance.PlaySE("Decision");
         }
 
         private void OnUserNameInputed()
         {
             model.SetUserName(view.GetUserName());
             view.DeactiveUserNameInput();
+            SoundManager.Instance.PlaySE("Save");
         }
     }
 }

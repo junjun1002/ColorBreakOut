@@ -8,6 +8,9 @@ namespace ColorBreakOut
     /// </summary>
     public class ComboEventHandler : EventReceiver<ComboEventHandler>
     {
+        /// <summary>
+        /// ƒRƒ“ƒ{”‚ğ•\¦‚·‚éText
+        /// </summary>
         [SerializeField] TextMeshProUGUI m_comboText;
 
         /// <summary>

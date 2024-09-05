@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d50f3e9b6e894e247a00143c0b0d41db, type: 3}
+  m_Name: SEDataList
+  m_EditorClassIdentifier: 
+  audioList:
+  - audioName: Ball
+    audioClip: {fileID: 8300000, guid: 0acd521a652945c4089053c552d5080d, type: 3}
+    pitch: 1
+    volume: 1
+  - audioName: Block
+    audioClip: {fileID: 8300000, guid: 59082718a84629445817836f44e233eb, type: 3}
+    pitch: 1
+    volume: 1
+  - audioName: Decision
+    audioClip: {fileID: 8300000, guid: 364beca4b133a7a46b39c3ccaa946067, type: 3}
+    pitch: 1
+    volume: 1
+  - audioName: Close
+    audioClip: {fileID: 8300000, guid: 581627d14a7ed7746ba8b5cfb91571b7, type: 3}
+    pitch: 1
+    volume: 1
+  - audioName: Result
+    audioClip: {fileID: 8300000, guid: bd0b777986b8f884b810538d50ebcc7f, type: 3}
+    pitch: 1
+    volume: 1
+  - audioName: Save
+    audioClip: {fileID: 8300000, guid: e1842147cfe776b43b1a5486b21c7639, type: 3}
+    pitch: 1
+    volume: 1

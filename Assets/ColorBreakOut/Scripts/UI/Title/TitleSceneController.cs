@@ -34,16 +34,19 @@ namespace ColorBreakOut
         private void OnStartButtonClicked()
         {
             model.ChangeScene(GameState.Instance.InGameState, GameManager.Instance.m_inGame);
+            SoundManager.Instance.PlaySE("Decision");
         }
 
         private void OnOpenRankingButtonClicked()
         {
             model.OpenRanking(m_ranking);
+            SoundManager.Instance.PlaySE("Decision");
         }
 
         private void OnQuitButtonClicked()
         {
             model.QuitGame();
+            SoundManager.Instance.PlaySE("Decision");
         }
     }
 }

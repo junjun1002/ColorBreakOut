@@ -40,6 +40,7 @@ namespace ColorBreakOut
         private void OnCloseButtonClicked()
         {
             model.CloseRankiing(m_ranking);
+            SoundManager.Instance.PlaySE("Close");
         }
     }
 }

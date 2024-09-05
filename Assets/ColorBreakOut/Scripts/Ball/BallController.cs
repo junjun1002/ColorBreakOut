@@ -56,7 +56,7 @@ namespace ColorBreakOut
         /// <param name="collision"></param>
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            //SoundManager.Instance.PlaySE(SoundManager.Instance.m_ballSe);
+            SoundManager.Instance.PlaySE("Ball");
 
             // 衝突相手がバーならバーのどの位置に当たったか加える力を変える
             if (collision.gameObject.TryGetComponent<BarController>(out var barController))

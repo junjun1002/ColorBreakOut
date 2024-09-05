@@ -28,6 +28,7 @@ namespace ColorBreakOut
         {
             m_eventSystemInGame = GameObject.FindGameObjectWithTag("EventSystem").GetComponent<EventSystemInGame>();
             m_inGameManager = InGameManager.Instance;
+            GenerateBlock();
         }
 
         /// <summary>
@@ -67,11 +68,6 @@ namespace ColorBreakOut
                 // 行を下にずらす
                 pos = new Vector2(transform.position.x, pos.y - blockHeight);
             }
-        }
-
-        private void OnEnable()
-        {
-            GenerateBlock();
         }
     }
 }

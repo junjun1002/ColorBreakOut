@@ -16,6 +16,7 @@ namespace ColorBreakOut
         /// <param name="owner"></param>
         public void OnExecute(InGameManager owner)
         {
+            SoundManager.Instance.PlayBGM("Fever");
             m_feverCoroutine = owner.StartCoroutine(FeverCoroutine(owner));
         }
 

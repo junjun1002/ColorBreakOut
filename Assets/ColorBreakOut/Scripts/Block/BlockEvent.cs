@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 namespace ColorBreakOut
 {
@@ -10,8 +9,6 @@ namespace ColorBreakOut
     {
         /// <summary>Blockのデータを持っているScriptableObject</summary>
         [SerializeField] BlockData m_blockData;
-        /// <summary>あと何回ぶつかるとこわれるか </summary>
-        private int m_currentLife;
 
         private InGameManager m_inGameManager;
         private InGameState m_inGameState;
@@ -22,25 +19,19 @@ namespace ColorBreakOut
             // フィーバーモード中は色は関係なく壊れる
             if (m_inGameManager.stateMachine.CurrentState == m_inGameState.FeverState)
             {
-                m_currentLife--;
-                if (m_currentLife == 0)
-                {
-                    // フィーバーモード中はスコアを10倍にする
-                    eventSystemInGame.CurrentScore += m_blockData.Score * 10;
-                    eventSystemInGame.CurrentBlock--;
-                    gameObject.SetActive(false);
-                }
+                // フィーバーモード中はスコアを10倍にする
+                eventSystemInGame.CurrentScore += m_blockData.Score * 10;
+                eventSystemInGame.CurrentBlock--;
+                SoundManager.Instance.PlaySE("Block");
+                gameObject.SetActive(false);
             }
-            else if (m_blockData.Color == eventSystemInGame.m_currentBallColor)  // ボールの色と同じだったら自身の色が同じなら壊れる
+            else if (m_blockData.Color == eventSystemInGame.m_currentBallColor)  // ボールの色と自身の色が同じなら壊れる
             {
-                m_currentLife--;
-                if (m_currentLife == 0)
-                {
-                    eventSystemInGame.CurrentCombo++;
-                    eventSystemInGame.CurrentScore += m_blockData.Score * eventSystemInGame.CurrentCombo;
-                    eventSystemInGame.CurrentBlock--;
-                    gameObject.SetActive(false);
-                }
+                eventSystemInGame.CurrentCombo++;
+                eventSystemInGame.CurrentScore += m_blockData.Score * eventSystemInGame.CurrentCombo;
+                eventSystemInGame.CurrentBlock--;
+                SoundManager.Instance.PlaySE("Block");
+                gameObject.SetActive(false);
             }
             else
             {
@@ -52,11 +43,6 @@ namespace ColorBreakOut
         {
             m_inGameManager = InGameManager.Instance;
             m_inGameState = InGameState.Instance;
-        }
-
-        private void OnEnable()
-        {
-            m_currentLife = m_blockData.Life;  
         }
     }
 }
