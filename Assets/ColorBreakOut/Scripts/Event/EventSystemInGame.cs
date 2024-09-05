@@ -58,7 +58,6 @@ namespace ColorBreakOut
                     m_currentBlock = value;
                     if (m_currentBlock == 0)
                     {
-                        GameManager.Instance.m_resultScore = m_currentScore;
                         ExecuteGameEnd();
                     }
                 }
@@ -108,6 +107,7 @@ namespace ColorBreakOut
         /// <summary>ゲームが終わった時のイベントを実行</summary>
         public void ExecuteGameEnd()
         {
+            GameManager.Instance.m_resultScore = m_currentScore;
             GameEndEvent?.Invoke();
         }
     }

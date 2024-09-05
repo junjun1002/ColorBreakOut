@@ -150,6 +150,7 @@ namespace ColorBreakOut
         protected override void OnDisable()
         {
             m_rb2d.velocity = Vector2.zero;
+            m_eventSystemInGame.ExecuteGameEnd();
         }
         #endregion
 
