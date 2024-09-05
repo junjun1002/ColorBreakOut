@@ -1,7 +1,14 @@
 using ColorBreakOut;
 using UnityEngine;
+
+/// <summary>
+/// データの保存、読み込みを行うクラス
+/// </summary>
 public class SaveManager : SingletonMonoBehavior<SaveManager>
 {
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
     protected override void Awake()
     {
         base.Awake();
@@ -9,6 +16,10 @@ public class SaveManager : SingletonMonoBehavior<SaveManager>
     }
 
 
+    /// <summary>
+    /// データの保存
+    /// </summary>
+    /// <param name="scoreRankingData"></param>
     public void SaveScriptableObject(ScoreRankingData scoreRankingData)
     {
         string jsonData = JsonUtility.ToJson(scoreRankingData);
@@ -16,6 +27,11 @@ public class SaveManager : SingletonMonoBehavior<SaveManager>
         PlayerPrefs.Save();
         Debug.Log("ScriptableObject saved: " + jsonData);
     }
+
+    /// <summary>
+    /// データの読み込み
+    /// </summary>
+    /// <param name="scoreRankingData"></param>
     public void LoadScriptableObject(ScoreRankingData scoreRankingData)
     {
         if (PlayerPrefs.HasKey("ScoreRankingData"))

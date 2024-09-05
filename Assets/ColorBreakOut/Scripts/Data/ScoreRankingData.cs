@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEditor;
 
 namespace ColorBreakOut
 {
@@ -21,8 +19,10 @@ namespace ColorBreakOut
             public int score;
         }
 
+        /// <summary>
+        /// ランキングリスト
+        /// </summary>
         [SerializeField] List<RankingData> rankingList = new List<RankingData>();
-
         public List<RankingData> RankingList { get => rankingList; }
 
         /// <summary>

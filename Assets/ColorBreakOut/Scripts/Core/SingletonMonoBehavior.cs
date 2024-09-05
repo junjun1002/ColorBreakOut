@@ -28,6 +28,9 @@ namespace ColorBreakOut
             }
         }
 
+        /// <summary>
+        /// ‰Šú‰»ˆ—
+        /// </summary>
         virtual protected void Awake()
         {
             if (this != Instance)

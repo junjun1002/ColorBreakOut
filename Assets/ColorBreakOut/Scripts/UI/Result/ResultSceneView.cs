@@ -10,8 +10,17 @@ namespace ColorBreakOut
     /// </summary>
     public class ResultSceneView : MonoBehaviour
     {
+        /// <summary>
+        /// タイトルに戻るボタンが押された時の処理
+        /// </summary>
         public Action OnReturnTitleButtonClicked { get; set; }
+        /// <summary>
+        /// ゲームに戻るボタンが押された時の処理
+        /// </summary>
         public Action OnReturnInGameButtonClicked { get; set; }
+        /// <summary>
+        /// ユーザー名が入力された時の処理
+        /// </summary>
         public Action OnUserNameInputed { get; set; }
 
         /// <summary>
@@ -69,6 +78,10 @@ namespace ColorBreakOut
             m_returnInGameButton.gameObject.SetActive(true);
         }
 
+        /// <summary>
+        /// ユーザー名を取得する
+        /// </summary>
+        /// <returns></returns>
         public string GetUserName()
         {
             return m_userNameInput.text;

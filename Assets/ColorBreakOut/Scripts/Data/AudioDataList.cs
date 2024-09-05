@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEditor;
 
 namespace ColorBreakOut
 {
@@ -26,10 +24,10 @@ namespace ColorBreakOut
             public float volume = 1;
         }
 
-
+        /// <summary>
+        /// オーディオのリスト
+        /// </summary>
         [SerializeField] List<AudioData> audioList = new List<AudioData>();
-
-
         public List<AudioData> AudioList { get => audioList; }
     }
 }

@@ -21,14 +21,15 @@ namespace ColorBreakOut
         /// <summary>フィーバーモードが終わった時のイベント</summary;
         public event Action FeverEndEvent;
 
-        //     /// <summary>ゲームが始まる時のイベント</summary>
-        //     public event Action GameStartEvent;
         /// <summary>ゲームが終わった時のイベント</summary>
         public event Action GameEndEvent;
 
         /// <summary>現在のボールの色</summary>
         [SerializeField, HideInInspector] public Color m_currentBallColor = Color.red;
 
+        /// <summary>
+        /// 現在のスコア
+        /// </summary>
         private int m_currentScore = 0;
         public int CurrentScore
         {
@@ -103,12 +104,6 @@ namespace ColorBreakOut
         {
             FeverEndEvent?.Invoke();
         }
-
-        //     /// <summary>ゲームが始まる時のイベントを実行</summary>
-        //     public void ExecuteGameStartEvent()
-        //     {
-        //         GameStartEvent?.Invoke();
-        //     }
 
         /// <summary>ゲームが終わった時のイベントを実行</summary>
         public void ExecuteGameEnd()

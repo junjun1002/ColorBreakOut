@@ -45,6 +45,9 @@ namespace ColorBreakOut
             SoundManager.Instance.PlaySE("Decision");
         }
 
+        /// <summary>
+        /// ƒ†[ƒU[–¼‚ª“ü—Í‚³‚ê‚½‚Ìˆ—
+        /// </summary>
         private void OnUserNameInputed()
         {
             model.SetUserName(view.GetUserName());

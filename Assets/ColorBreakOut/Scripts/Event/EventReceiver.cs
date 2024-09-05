@@ -12,6 +12,9 @@ namespace ColorBreakOut
         protected InGameManager m_inGameManager;
         protected InGameState m_inGameState;
 
+        /// <summary>
+        /// 初期化処理
+        /// </summary>
         private void Awake()
         {
             m_eventSystemInGame = GameObject.FindGameObjectWithTag("EventSystem").GetComponent<EventSystemInGame>();

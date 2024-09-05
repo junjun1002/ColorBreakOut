@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace ColorBreakOut
 {
     /// <summary>
@@ -17,6 +13,10 @@ namespace ColorBreakOut
             GameManager.Instance.ChangeScene(state, sceneName);
         }
 
+        /// <summary>
+        /// ユーザーネームを登録する
+        /// </summary>
+        /// <param name="userName"></param>
         public void SetUserName(string userName)
         {
             GameManager.Instance.RankingUpdate(userName);

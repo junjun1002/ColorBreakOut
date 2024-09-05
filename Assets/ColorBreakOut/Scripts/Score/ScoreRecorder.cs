@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Linq;
 using TMPro;
 
@@ -22,8 +20,8 @@ namespace ColorBreakOut
         /// </summary>
         public void RankingUpdate()
         {
+            // スコアの降順に並び替え
             var record = m_scoreRanking.RankingList.OrderByDescending((x) => x.score);
-
             int index = 0;
             foreach (var item in record)
             {
@@ -31,6 +29,7 @@ namespace ColorBreakOut
                 index++;
             }
 
+            // ランキングを表示
             for (int i = 0; i < m_scoreRanking.RankingList.Count; i++)
             {
                 Debug.Log(m_scoreRanking.RankingList[i].userName + " : " + m_scoreRanking.RankingList[i].score);

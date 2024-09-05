@@ -8,6 +8,9 @@ namespace ColorBreakOut
     /// </summary>
     public class ScoreEventHandler : EventReceiver<ScoreEventHandler>
     {
+        /// <summary>
+        /// スコアを表示するText
+        /// </summary>
         [SerializeField] public TextMeshProUGUI m_scoreText;
 
         /// <summary>
@@ -26,7 +29,6 @@ namespace ColorBreakOut
         protected override void OnDisable()
         {
             m_eventSystemInGame.ScoreChangedEvent -= OnScoreChanged;
-            //SaveAndLoad.Instance.SaveScoreData(m_currentScore);
         }
 
         /// <summary>

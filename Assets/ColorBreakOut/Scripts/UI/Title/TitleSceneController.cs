@@ -25,7 +25,10 @@ namespace ColorBreakOut
             model = new TitleSceneModel();
             view = FindObjectOfType<TitleSceneView>();
 
-            view.Initialize(OnStartButtonClicked, OnQuitButtonClicked, OnOpenRankingButtonClicked);
+            view.OnStartButtonClicked += OnStartButtonClicked;
+            view.OnOpenRankingButtonClicked += OnOpenRankingButtonClicked;
+            view.OnQuitButtonClicked += OnQuitButtonClicked;
+            view.Initialize();
         }
 
         /// <summary>
@@ -37,12 +40,18 @@ namespace ColorBreakOut
             SoundManager.Instance.PlaySE("Decision");
         }
 
+        /// <summary>
+        /// ランキングボタンが押された時の処理
+        /// </summary>
         private void OnOpenRankingButtonClicked()
         {
             model.OpenRanking(m_ranking);
             SoundManager.Instance.PlaySE("Decision");
         }
 
+        /// <summary>
+        /// 終了ボタンが押された時の処理
+        /// </summary>
         private void OnQuitButtonClicked()
         {
             model.QuitGame();

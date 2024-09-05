@@ -18,6 +18,9 @@ namespace ColorBreakOut
 
         Rigidbody2D m_rb2d;
 
+        /// <summary>
+        /// 初期化処理
+        /// </summary>
         private void Start()
         {
             m_rb2d = GetComponent<Rigidbody2D>();

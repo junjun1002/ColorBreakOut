@@ -8,23 +8,23 @@ namespace ColorBreakOut
         #region InGameState
         public StateMachine<InGameManager> stateMachine;
 
-        //private IState<GameManager> titleState = new Title();
-        //public IState<GameManager> TitleState { get => titleState; }
-
+        /// <summary>
+        /// デフォルトステート
+        /// </summary>
         private IState<InGameManager> defaultState = new Default();
         public IState<InGameManager> DefaultState { get => defaultState; }
 
+        /// <summary>
+        /// フィーバーステート
+        /// </summary>
+
         private IState<InGameManager> feverState = new Fever();
         public IState<InGameManager> FeverState { get => feverState; }
-
-        //private IState<GameManager> gameClearState = new GameClear();
-        //public IState<GameManager> GameClearState { get => gameClearState; }
-
-        //private IState<GameManager> gameOverState = new GameOver();
-        //public IState<GameManager> GameOverState { get => gameOverState; }
-
         #endregion
 
+        /// <summary>
+        /// 初期化処理
+        /// </summary>
         protected override void Awake()
         {
             base.Awake();

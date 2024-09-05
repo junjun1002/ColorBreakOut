@@ -25,6 +25,9 @@ namespace ColorBreakOut
         /// </summary>
         [SerializeField] AudioDataList m_seDataList;
 
+        /// <summary>
+        /// ‰Šú‰»ˆ—
+        /// </summary>
         protected override void Awake()
         {
             base.Awake();

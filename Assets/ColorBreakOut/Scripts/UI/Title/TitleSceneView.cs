@@ -1,5 +1,4 @@
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +9,19 @@ namespace ColorBreakOut
     /// </summary>
     public class TitleSceneView : MonoBehaviour
     {
+        /// <summary>
+        /// スタートボタンが押された時の処理
+        /// </summary>
+        public Action OnStartButtonClicked { get; set; }
+        /// <summary>
+        /// 終了ボタンが押された時の処理
+        /// </summary>
+        public Action OnQuitButtonClicked { get; set; }
+        /// <summary>
+        /// ランキングボタンが押された時の処理
+        /// </summary>
+        public Action OnOpenRankingButtonClicked { get; set; }
+
         /// <summary>
         /// スタートボタン
         /// </summary>
@@ -28,12 +40,11 @@ namespace ColorBreakOut
         /// <summary>
         /// 初期化処理
         /// </summary>
-        /// <param name="onStartButtonClicked"></param>
-        public void Initialize(Action onStartButtonClicked, Action onQuitButtonClicked, Action onOpenRankingButtonClicked)
+        public void Initialize()
         {
-            m_startButton.onClick.AddListener(() => onStartButtonClicked?.Invoke());
-            m_quitButton.onClick.AddListener(() => onQuitButtonClicked?.Invoke());
-            m_openRankingButton.onClick.AddListener(() => onOpenRankingButtonClicked?.Invoke());
+            m_startButton.onClick.AddListener(() => OnStartButtonClicked?.Invoke());
+            m_quitButton.onClick.AddListener(() => OnQuitButtonClicked?.Invoke());
+            m_openRankingButton.onClick.AddListener(() => OnOpenRankingButtonClicked?.Invoke());
         }
     }
 }
